@@ -4,21 +4,44 @@
 using namespace std;
 
 class Banco(){
-
+  private: 
+  public:
 }
 
 class Cajero(){
-  
+  private: 
+    string nombre;
+    int tiempo;
+  public:
+    void setTiempo(int tiempo);
+    int atender();
+    bool disponible();
 }
 
 class Cliente(){
-  
+  private: 
+    int tiempo;
+  public:
+
 }
 
 class Cola(){
-  
+  private: 
+  public:
 }
 
 class ArrayCajeros(){
+  private: 
+  public:
+}
 
+int main(){
+
+
+
+  return 0;
+}
+
+Cajero::atender(){
+  return tiempo-1;
 }
