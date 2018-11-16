@@ -1,0 +1,24 @@
+#include <iostream>
+#include <iomanip>
+#include <random>
+using namespace std;
+
+class Banco(){
+
+}
+
+class Cajero(){
+  
+}
+
+class Cliente(){
+  
+}
+
+class Cola(){
+  
+}
+
+class ArrayCajeros(){
+
+}
