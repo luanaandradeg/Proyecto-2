@@ -1,96 +1,73 @@
 #include <iostream>
 #include <random>
 #include <vector>
+#include <ctime>
+#include <list>
+
+using namespace std;
 
 class Cliente {
-  int tiempo;
+  unsigned tiempo;
   public:
-  setTiempo();
-  int getTiempo();
+  Cliente(){
+    tiempo=rand()%13+3;
+  };
+  unsigned getTiempo();
 };
-Cliente::setTiempo(){
-  for (i=0; i<clientes; i++)
-    Cliente[clientes]=rand()%13+3;
-}
-Cliente::getTiempo(){
-  for (i=0; i<clientes; i++)
-    cout <<Cliente[clientes];
+unsigned Cliente::getTiempo(){
+  return tiempo; 
 }
 
-class Cola {
-  private:
-    int clientes;
-    int tiempo;
-    Cliente *ptr;
-  public:
-    Cola(int _clientes) (clientes):_clientes { tiempo = 0; ptr = new Cliente[clientes];};
-    getTamaño();
-    int getCliente(); 
-    bool isEmpty(); // verifica si esta vacia la cola.
-};
-Cola::getCliente(){
-  Cliente.pop_front();
-}
-Cola::getTamaño(){
-  sizeof(Cliente)
-}
-Cola::isEmpty(){
-  if(Cola.getTamaño()=0)
-    break;
-}
-class Cajero {
-  private:
-    int tiempo;
-  public:
-    void setTiempo(int tiempo);
-    int atender(); // resta un minuto de atencion.
-    bool estaLibre(); // Devuelve true si ya no esta ocupado.
-};
-Cajero::setTiempo(){
-
-}
-Cajero::atender(){
-  tiempo-=1;
-}
-Cajero::estaLibre(){
- if ()
-}
 class Banco {
   private:
-    string nombre;
-    int numcajeros;
-    Cajero *cajeros;
-    Cola *cola;
+    Cliente *clientes;
+    unsigned cajeros[5]={0,0,0,0,0};
+    unsigned numclientes;
+    unsigned contador=0;
+    unsigned tiempoxcajero[5]={0, 0, 0, 0, 0};
+    unsigned tiempomax=0;
   public:
-    Banco(int _numcajeros);
-    int simularAtencion(); // simula proceso de atencion. En un bucle recorrer los cajeros y restar un minuto de atenncion por cada cajero.
-    void setCliente(Cliente _cliente);
+    Banco(Cliente *_clientes, unsigned _numclientes){
+      clientes=_clientes;
+      numclientes=_numclientes;
+    };
+    void simularAtencion();
+    void getTiempoMax();
 };
 
-Banco::simularAtencion(){
-    
+void Banco::simularAtencion(){
+  while(contador<numclientes){
+  for (unsigned i=0; i<5; i++){
+    if (cajeros[i]==0){
+      cajeros[i]=clientes[contador].getTiempo();
+      cout <<"Cliente " <<contador+1 <<" a la caja " <<i+1 <<"\n";
+      tiempoxcajero[i]+=cajeros[i];
+      contador++;
+      if (contador==numclientes)
+        break;
+    }
+  }  
+  for (unsigned i=0; i<5; i++)
+    cajeros[i]--;
+  }
+  for (unsigned i=0; i<5; i++){
+    if (tiempomax<tiempoxcajero[i])
+      tiempomax=tiempoxcajero[i];
+  }
 }
-Banco::setCliente(){
-  nombre=cliente;
+void Banco::getTiempoMax(){
+  cout <<"Se atendió a todos los clientes en " <<tiempomax <<" minutos.";
 }
 
 int main()
 {
-  Cola n;
-  cin >>n;
-
-  /*
-  1. Establecer numero de clientes
-  2. Establecer numero de cajeros.
-  3. Asignar tiempo aleatorio a los clientes.
-  4. Asignar aleatoriamente los clientes a la cola escenario 1. Y Según prioridad a escenario 2.
-  5. Mostrar el tiempo de ejecución.
-
-  Consideraciones.
-
-  Puede incorporar Herencia en el proyecto.
-  Use relaciones entre clases como se describe en el código de ejemplo.
-  */
-  Banco.simularatencion();
+  unsigned numclientes;
+  cin >>numclientes;
+  Cliente clientes[numclientes];
+  for (unsigned i=0; i<numclientes; i++)
+    cout <<"Tiempo de atención cliente " <<i+1 <<": " <<clientes[i].getTiempo() <<"\n";
+  Banco BCP(clientes, numclientes);
+  BCP.simularAtencion();
+  BCP.getTiempoMax();
   return 0;
 }
