@@ -1,47 +1,96 @@
 #include <iostream>
-#include <iomanip>
 #include <random>
-using namespace std;
+#include <vector>
 
-class Banco(){
-  private: 
+class Cliente {
+  int tiempo;
   public:
+  setTiempo();
+  int getTiempo();
+};
+Cliente::setTiempo(){
+  for (i=0; i<clientes; i++)
+    Cliente[clientes]=rand()%13+3;
+}
+Cliente::getTiempo(){
+  for (i=0; i<clientes; i++)
+    cout <<Cliente[clientes];
 }
 
-class Cajero(){
-  private: 
-    string nombre;
+class Cola {
+  private:
+    int clientes;
+    int tiempo;
+    Cliente *ptr;
+  public:
+    Cola(int _clientes) (clientes):_clientes { tiempo = 0; ptr = new Cliente[clientes];};
+    getTamaño();
+    int getCliente(); 
+    bool isEmpty(); // verifica si esta vacia la cola.
+};
+Cola::getCliente(){
+  Cliente.pop_front();
+}
+Cola::getTamaño(){
+  sizeof(Cliente)
+}
+Cola::isEmpty(){
+  if(Cola.getTamaño()=0)
+    break;
+}
+class Cajero {
+  private:
     int tiempo;
   public:
     void setTiempo(int tiempo);
-    int atender();
-    bool disponible();
-}
-
-class Cliente(){
-  private: 
-    int tiempo;
-  public:
+    int atender(); // resta un minuto de atencion.
+    bool estaLibre(); // Devuelve true si ya no esta ocupado.
+};
+Cajero::setTiempo(){
 
 }
-
-class Cola(){
-  private: 
-  public:
-}
-
-class ArrayCajeros(){
-  private: 
-  public:
-}
-
-int main(){
-
-
-
-  return 0;
-}
-
 Cajero::atender(){
-  return tiempo-1;
+  tiempo-=1;
+}
+Cajero::estaLibre(){
+ if ()
+}
+class Banco {
+  private:
+    string nombre;
+    int numcajeros;
+    Cajero *cajeros;
+    Cola *cola;
+  public:
+    Banco(int _numcajeros);
+    int simularAtencion(); // simula proceso de atencion. En un bucle recorrer los cajeros y restar un minuto de atenncion por cada cajero.
+    void setCliente(Cliente _cliente);
+};
+
+Banco::simularAtencion(){
+    
+}
+Banco::setCliente(){
+  nombre=cliente;
+}
+
+int main()
+{
+  Cola n;
+  cin >>n;
+
+  /*
+  1. Establecer numero de clientes
+  2. Establecer numero de cajeros.
+  3. Asignar tiempo aleatorio a los clientes.
+  4. Asignar aleatoriamente los clientes a la cola escenario 1. Y Según prioridad a escenario 2.
+  5. Mostrar el tiempo de ejecución.
+
+  Consideraciones.
+
+  Puede incorporar Herencia en el proyecto.
+  Use relaciones entre clases como se describe en el código de ejemplo.
+  */
+  Banco.simularatencion();
+  return 0;
 }
